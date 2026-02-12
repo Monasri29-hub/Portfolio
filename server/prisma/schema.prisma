@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      String   @default("USER") // ADMIN, USER
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Profile {
+  id                 String  @id @default(uuid())
+  bio                String?
+  resumeUrl          String?
+  githubUrl          String?
+  linkedinUrl        String?
+  mediumUrl          String?
+  publicEmail        String?
+  location           String?
+  educationalDetails String? // stored as JSON string or text
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  techStack   String // comma separated or JSON
+  githubLink  String?
+  liveLink    String?
+  imageUrl    String?
+  category    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Skill {
+  id       String @id @default(uuid())
+  name     String
+  category String // Programming, AI/ML, Tools, Research
+  level    Int    @default(0) // 0-100
+}
+
+model Blog {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  tags      String // comma separated
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Achievement {
+  id          String   @id @default(uuid())
+  title       String
+  date        DateTime
+  type        String // Certification, Award, Scholarship
+  description String?
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  content   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
