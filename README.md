@@ -1,5 +1,7 @@
 # Monasri Kundeti | Cinematic Portfolio
 
+**Live Demo**: [https://portfolio-a6sm.vercel.app/](https://portfolio-a6sm.vercel.app/)
+
 An interactive, high-fidelity React + TypeScript + Vite portfolio showcasing fluid aesthetics, micro-animations, and advanced frontend performance optimizations.
 
 ---
